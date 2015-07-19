@@ -1,6 +1,23 @@
 from selenium import webdriver
+import unittest
 
-browser=webdriver.Firefox()
-browser.get('http://localhost:8000')
-assert 'Django' in browser.title
+
+class VisitorTest(unittest.TestCase):
+
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+        self.browser.implicit_wait(3)
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_front_page_has_needed_tabs(self):
+        # john goes to the webapp home page
+        browser=webdriver.Firefox()
+        browser.get('http://localhost:8000')
+
+        # the title should have the word Classvotes
+        assert 'Classvotes' in browser.title
+
+
 
