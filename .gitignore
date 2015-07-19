@@ -1,3 +1,6 @@
+#Vim
+*.swp
+*.swo
 #sqlite
 db.sqlite3
 # Byte-compiled / optimized / DLL files
