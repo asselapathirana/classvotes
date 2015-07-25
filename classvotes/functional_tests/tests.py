@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import unittest
 
 
@@ -50,4 +51,22 @@ class VisitorTest(unittest.TestCase):
 
         # the title should have the word Classvotes
         self.assertIn(teacher_heading.text,'Create Vote')
+        # shes finds a input box with id id_vote_number and placeholder "Enter the vote number"
+
+        new_vote_box=self.browser.find_element_by_id('id_vote_number')
+        # how to test if an element is an input box. self.assertEqual(new_vote_box.elementType,"Input")
+        self.assertEqual(new_vote_box.get_attribute('placeholder'),'Enter the vote number')
+
+        # she presses enter without entering any text. The page now has an error message saying "Vote name can not be empty"
+        new_vote_box.send_keys(Keys.ENTER)
+
+        #refactor!!
+        new_vote_box=self.browser.find_element_by_id('id_vote_number')
+        # how to test if an element is an input box. self.assertEqual(new_vote_box.elementType,"Input")
+        self.assertEqual(new_vote_box.get_attribute('placeholder'),'Enter the vote number')
+
+
+        vote_name_error=self.browser.find_element_by_css_selector('.has-error')
+
+
 

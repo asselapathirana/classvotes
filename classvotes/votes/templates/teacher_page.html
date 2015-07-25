@@ -2,7 +2,9 @@
     <title>Classvotes: Simple voting system -fix </title>
     <body>
         <h1 class='heading'> Create Vote </h1>
+        <form method='POST'>
         <input id="id_vote_number"  placeholder="Enter the vote number" />
-        <a class="teacher_link" href='/teacher'>Teacher</a>
+        {% csrf_token %}
+        </form>
     </body>
 </html>
