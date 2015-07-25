@@ -45,6 +45,9 @@ class VisitorTest(unittest.TestCase):
         teacher_link.click()
 
 
-        # and finds herself in the page with  title "Create vote"
-        self.assertIn('Create vote',self.browser.title)
+        # and finds herself in the page with  heading "Create vote"
+        teacher_heading=self.browser.find_element_by_class_name('heading')
+
+        # the title should have the word Classvotes
+        self.assertIn(teacher_heading.text,'Create Vote')
 

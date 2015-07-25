@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', 'votes.views.home_page',name='home'),
+    url(r'^teacher/$', 'votes.views.teacher_page',name='teacher'),
     url(r'^admin/', include(admin.site.urls)),
 ]
