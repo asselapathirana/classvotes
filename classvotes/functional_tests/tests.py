@@ -57,16 +57,29 @@ class VisitorTest(unittest.TestCase):
         # how to test if an element is an input box. self.assertEqual(new_vote_box.elementType,"Input")
         self.assertEqual(new_vote_box.get_attribute('placeholder'),'Enter the vote number')
 
-        # she presses enter without entering any text. The page now has an error message saying "Vote name can not be empty"
+        #she enters the number 1 and press enter
+
+        new_vote_box.send_keys('my test 1')
         new_vote_box.send_keys(Keys.ENTER)
 
-        #refactor!!
-        new_vote_box=self.browser.find_element_by_id('id_vote_number')
-        # how to test if an element is an input box. self.assertEqual(new_vote_box.elementType,"Input")
-        self.assertEqual(new_vote_box.get_attribute('placeholder'),'Enter the vote number')
+        # now she sees the text 'my test 1' in the response
+        teacher_heading=self.browser.find_element_by_class_name('heading')
+        self.assertNotIn(teacher_heading.text,'Create Vote')
+        
+        # the title should have the word Classvotes
+        self.assertIn(teacher_heading.text,'my test 1')
 
 
-        vote_name_error=self.browser.find_element_by_css_selector('.has-error')
+        ## she presses enter without entering any text. The page now has an error message saying "Vote name can not be empty"
+        #new_vote_box.send_keys(Keys.ENTER)
+#
+#        #refactor!!
+#        new_vote_box=self.browser.find_element_by_id('id_vote_number')
+#        # how to test if an element is an input box. self.assertEqual(new_vote_box.elementType,"Input")
+#        self.assertEqual(new_vote_box.get_attribute('placeholder'),'Enter the vote number')
+#
+#
+#        vote_name_error=self.browser.find_element_by_css_selector('.has-error')
 
 
 
